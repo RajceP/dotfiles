@@ -1,0 +1,7 @@
+[core]
+	autocrlf = input
+[user]
+	email = petr.rajtslegr@gmail.com
+	name = Petr Rajtslegr
+[credential]
+	helper = cache --timeout=3600
