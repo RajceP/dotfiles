@@ -11,16 +11,13 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/petr/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+ZSH_DISABLE_COMPFIX=true
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOCONNECT="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -28,7 +25,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(sudo git git-extra-commands git-auto-fetch nvm npm docker docker-compose autojump zsh-syntax-highlighting zsh-autosuggestions thefuck fzf-tab)
+plugins=(tmux git git-extra-commands git-auto-fetch history nvm npm ng docker docker-compose autojump zsh-syntax-highlighting zsh-autosuggestions thefuck fzf-tab)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -37,21 +34,21 @@ source $ZSH/oh-my-zsh.sh
 
 # --------------------------- Custom Configurations ---------------------------
 
-ZSH_DISABLE_COMPFIX=true
-
 # Set default editor to code
 export EDITOR="code"
 
 # PATH
 export DENO_INSTALL="/home/petr/.deno"
+export PATH=$HOME/.local/bin:$PATH
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$PATH:/mnt/c/Users/petrr/AppData/Local/Programs/Microsoft VS Code Insiders/bin"
 export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
+export PATH="$PATH:/mnt/c/Windows"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-up; pip-up; apt-cl; dist-up; zsh-rr"
+alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-up; pip-up; apt-cl; zsh-rr"
 
 # zsh
 alias zsh-cfg="code ~/.zshrc"
@@ -70,12 +67,13 @@ alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
 alias nvm-up="nvm install node --reinstall-packages-from=node"
 
 # nvim
-alias nvim-up="git -C ~/.config/nvim pull --rebase"
+alias nvim-up="git -C ~/.config/nvim pull --rebase --autostash"
 
 # pip
-alias pip-up="python3 -m pip install --upgrade pip"
+alias pip-up="python -m pip install --upgrade pip"
 
 # Basic bash aliases
+alias code="code-insiders"
 alias clr="clear"
 alias cd..="cd .."
 alias exp="explorer.exe ."
@@ -111,14 +109,6 @@ alias npm-cv="npm cache verify"
 alias uncommit="git reset HEAD~1"
 
 # Dev-env aliases
-alias vim="nvim"
-
-alias v="vim"
-alias v.="vim ."
-
-alias code="code-insiders"
-alias c="code"
-alias c.="code ."
 
 alias mklnsf="ln -s -f ~/dev/work/php/* ~/dev/php"
 
@@ -142,3 +132,4 @@ alias stop-postgres="sudo service postgresql stop"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
