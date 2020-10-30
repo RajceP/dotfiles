@@ -1,3 +1,8 @@
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -14,8 +19,8 @@ export ZSH="/home/petr/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_DISABLE_COMPFIX=true
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-ZSH_TMUX_AUTOSTART="true"
-ZSH_TMUX_AUTOCONNECT="true"
+# ZSH_TMUX_AUTOSTART="true"
+# ZSH_TMUX_AUTOCONNECT="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
@@ -36,6 +41,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Set default editor to code
 export EDITOR="code"
+
+# alias nvim="~/dev/nvim/nvim.appimage"
 
 # PATH
 export DENO_INSTALL="/home/petr/.deno"
