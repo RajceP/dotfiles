@@ -124,3 +124,4 @@ cd ~
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 alias config='/usr/bin/git --git-dir=/home/petr/.cfg/ --work-tree=/home/petr'
+complete -C /home/petr/go/bin/bit bit

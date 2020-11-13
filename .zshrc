@@ -1,4 +1,5 @@
-if [ -z "$TMUX" ]
+# Start tmux on initialization.
+if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]
 then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
@@ -19,10 +20,6 @@ export ZSH="/home/petr/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_DISABLE_COMPFIX=true
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-# ZSH_TMUX_AUTOSTART="true"
-# ZSH_TMUX_AUTOCONNECT="true"
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -42,20 +39,20 @@ source $ZSH/oh-my-zsh.sh
 # Set default editor to code
 export EDITOR="code"
 
-# alias nvim="~/dev/nvim/nvim.appimage"
-
 # PATH
 export DENO_INSTALL="/home/petr/.deno"
 export PATH=$HOME/.local/bin:$PATH
-export PATH="$PATH:/usr/local/go/bin"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/mnt/c/Users/petrr/AppData/Local/Programs/Microsoft VS Code Insiders/bin"
 export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
 export PATH="$PATH:/mnt/c/Windows"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-up; pip-up; apt-cl; zsh-rr"
+alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-up; bit update; pip-up; apt-cl; clr; zsh-rr"
 
 # zsh
 alias zsh-cfg="code ~/.zshrc"
@@ -139,4 +136,5 @@ alias stop-postgres="sudo service postgresql stop"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/petr/go/bin/bit bit
