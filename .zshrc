@@ -27,7 +27,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(tmux git git-extra-commands git-auto-fetch history nvm npm ng docker docker-compose autojump zsh-syntax-highlighting zsh-autosuggestions thefuck fzf-tab)
+plugins=(tmux git git-extra-commands git-auto-fetch history nvm npm ng docker docker-compose autojump thefuck zsh-syntax-highlighting zsh-autosuggestions fzf-tab)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -50,6 +50,8 @@ export PATH="$PATH:/mnt/c/Users/petrr/AppData/Local/Programs/Microsoft VS Code I
 export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
 export PATH="$PATH:/mnt/c/Windows"
 
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
 alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-up; bit update; pip-up; apt-cl; clr; zsh-rr"
@@ -58,6 +60,7 @@ alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-up; bit update;
 alias zsh-cfg="code ~/.zshrc"
 alias zsh-rr="exec zsh"
 alias zsh-up="omz update; p10k-up; fzf-up; zsh-syntax-highlighting-up; zsh-autosuggestion-up; zsh-autocomplete-up; git-extra-commands-up; fzf-tab-up"
+alias zsh-hs="mv ~/.zsh_history ~/.zsh_history_bad && strings ~/.zsh_history_bad > ~/.zsh_history && fc -R ~/.zsh_history && rm ~/.zsh_history_bad"
 
 alias p10k-up="git -C ~/.oh-my-zsh/custom/themes/powerlevel10k pull --rebase"
 alias fzf-up="git -C ~/.fzf pull --rebase"
@@ -66,6 +69,7 @@ alias zsh-autosuggestion-up="git -C ~/.oh-my-zsh/custom/plugins/zsh-autosuggesti
 alias zsh-autocomplete-up="git -C ~/.oh-my-zsh/custom/plugins/zsh-autocomplete pull --rebase"
 alias git-extra-commands-up="git -C ~/.oh-my-zsh/custom/plugins/git-extra-commands pull --rebase"
 alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
+alias tmux-up="rm -fr /tmp/tmux; git clone https://github.com/tmux/tmux.git /tmp/tmux; cd /tmp/tmux; sh autogen.sh; ./configure && make; sudo make install; cd -; rm -fr /tmp/tmux; clr"
 
 # nvm
 alias nvm-up="nvm install node --reinstall-packages-from=node"
@@ -113,7 +117,6 @@ alias npm-cv="npm cache verify"
 alias uncommit="git reset HEAD~1"
 
 # Dev-env aliases
-
 alias mklnsf="ln -s -f ~/dev/work/php/* ~/dev/php"
 
 alias start-ssh="sudo service ssh start"
