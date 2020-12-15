@@ -54,12 +54,12 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-up; bit update; pip-up; apt-cl; clr; zsh-rr"
+alias all-up="apt-up; zsh-up; nvm-up; npm-up; deno upgrade; nvim-cfg-up; bit update; pip-up; apt-cl; clr; zsh-rr"
 
 # zsh
 alias zsh-cfg="code ~/.zshrc"
 alias zsh-rr="exec zsh"
-alias zsh-up="omz update; p10k-up; fzf-up; zsh-syntax-highlighting-up; zsh-autosuggestion-up; zsh-autocomplete-up; git-extra-commands-up; fzf-tab-up"
+alias zsh-up="omz update --unattended; p10k-up; fzf-up; zsh-syntax-highlighting-up; zsh-autosuggestion-up; zsh-autocomplete-up; git-extra-commands-up; fzf-tab-up"
 alias zsh-hs="mv ~/.zsh_history ~/.zsh_history_bad && strings ~/.zsh_history_bad > ~/.zsh_history && fc -R ~/.zsh_history && rm ~/.zsh_history_bad"
 
 alias p10k-up="git -C ~/.oh-my-zsh/custom/themes/powerlevel10k pull --rebase"
@@ -70,12 +70,13 @@ alias zsh-autocomplete-up="git -C ~/.oh-my-zsh/custom/plugins/zsh-autocomplete p
 alias git-extra-commands-up="git -C ~/.oh-my-zsh/custom/plugins/git-extra-commands pull --rebase"
 alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
 alias tmux-up="rm -fr /tmp/tmux; git clone https://github.com/tmux/tmux.git /tmp/tmux; cd /tmp/tmux; sh autogen.sh; ./configure && make; sudo make install; cd -; rm -fr /tmp/tmux; clr"
+alias nvim-up="rm -fr /tmp/nvim; wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -P /tmp/nvim; cd /tmp/nvim; chmod +x nvim.appimage; mv nvim.appimage nvim; sudo mv nvim /usr/local/bin/; cd -; rm -fr /tmp/nvim; clr"
 
 # nvm
 alias nvm-up="nvm install node --reinstall-packages-from=node"
 
 # nvim
-alias nvim-up="git -C ~/.config/nvim pull --rebase --autostash"
+alias nvim-cfg-up="git -C ~/.config/nvim pull --rebase --autostash"
 
 # pip
 alias pip-up="python -m pip install --upgrade pip"
