@@ -71,6 +71,7 @@ alias git-extra-commands-up="git -C ~/.oh-my-zsh/custom/plugins/git-extra-comman
 alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
 alias tmux-up="rm -fr /tmp/tmux; git clone https://github.com/tmux/tmux.git /tmp/tmux; cd /tmp/tmux; sh autogen.sh; ./configure && make; sudo make install; cd -; rm -fr /tmp/tmux; clr"
 alias nvim-up="rm -fr /tmp/nvim; wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -P /tmp/nvim; cd /tmp/nvim; chmod +x nvim.appimage; mv nvim.appimage nvim; sudo mv nvim /usr/local/bin/; cd -; rm -fr /tmp/nvim; clr"
+alias go-up="rm -rf /tmp/go; git clone https://github.com/udhos/update-golang /tmp/go; cd /tmp/go; sudo ./update-golang.sh; cd -; rm -fr /tmp/go; clr"
 
 # nvm
 alias nvm-up="nvm install node --reinstall-packages-from=node"
