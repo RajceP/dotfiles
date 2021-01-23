@@ -47,6 +47,7 @@ export GOPATH="$HOME/go"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/mnt/c/Users/petrr/AppData/Local/Programs/Microsoft VS Code/bin"
+export PATH="$PATH:/mnt/c/Users/petrr/AppData/Local/Programs/Microsoft VS Code Insiders/bin"
 export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
 export PATH="$PATH:/mnt/c/Windows"
 
@@ -83,7 +84,7 @@ alias nvim-cfg-up="git -C ~/.config/nvim pull --rebase --autostash"
 alias pip-up="python -m pip install --upgrade pip"
 
 # Basic bash aliases
-# alias code="code-insiders"
+alias code="code-insiders"
 alias clr="clear"
 alias cd..="cd .."
 alias exp="explorer.exe ."
